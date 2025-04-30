@@ -8,5 +8,15 @@
     <script type="module" src="./script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   </head>
-  <body></body>
+  <body>
+    <form>
+      <h1>Create post:</h1>
+      <label for="form__input--title">Post title:</label>
+      <input type="text" name="post-title" id="form__input--title" />
+      <label for="form__input--content">Content:</label>
+      <textarea name="post-content" id="form__input--content"></textarea>
+      <button type="submit" id="form__button">publish</button>
+    </form>
+    <div class="posts"></div>
+  </body>
 </html>
