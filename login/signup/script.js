@@ -1,18 +1,21 @@
-const loginForm = document.querySelector(".form__signup");
+const signupForm = document.querySelector(".form__signup");
 
-loginForm.addEventListener("submit", async (event) => {
+signupForm.addEventListener("submit", async (event) => {
   event.preventDefault();
 
   const email = event.target.elements["email"].value;
   const password = event.target.elements["password"].value;
   const signupObj = { email, password };
-  loginForm.reset();
+  signupForm.reset();
 
   try {
     const response = await axios.post(
       "http://localhost:1000/signup",
       signupObj
     );
+    if (response.data === "signed up") {
+      window.location.href = "../index.html";
+    }
   } catch (error) {
     console.error(error);
   }

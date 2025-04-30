@@ -32,13 +32,20 @@ document.addEventListener("DOMContentLoaded", async () => {
 createPostForm.addEventListener("submit", async (event) => {
   event.preventDefault();
 
-  const name = event.target.elements["post-title"].value;
-  const content = event.target.elements["post-content"].value;
+  const name = event.target.elements["post-title"].value.trim();
+  const content = event.target.elements["post-content"].value.trim();
+
+  if (name === "" || content === "") {
+    return console.error("cannot submit empty form");
+  }
   const postObj = { name, content };
   createPostForm.reset();
 
   try {
-    await axios.post("http://localhost:1000/", postObj);
+    const response = await axios.post("http://localhost:1000/", postObj);
+    if (response.data === "ok") {
+      window.location.reload();
+    }
   } catch (error) {
     console.log(error);
   }
