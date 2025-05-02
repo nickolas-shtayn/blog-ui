@@ -6,6 +6,7 @@ signupForm.addEventListener("submit", async (event) => {
   const email = event.target.elements["email"].value;
   const password = event.target.elements["password"].value;
   const signupObj = { email, password };
+  console.log(signupObj);
   signupForm.reset();
 
   try {

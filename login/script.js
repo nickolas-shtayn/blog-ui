@@ -1,3 +1,5 @@
+axios.defaults.withCredentials = true;
+
 const loginForm = document.querySelector(".login__form");
 const message = document.querySelector("p");
 
