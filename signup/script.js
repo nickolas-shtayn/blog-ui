@@ -16,7 +16,7 @@ signupForm.addEventListener("submit", async (event) => {
       signupObj
     );
     if (response.data === "signed up") {
-      window.location.href = "../index.html";
+      window.location.href = "../login/index.html";
     }
   } catch (error) {
     responseMessage.textContent = error.response.data;
