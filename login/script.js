@@ -1,7 +1,5 @@
-axios.defaults.withCredentials = true;
-
 const loginForm = document.querySelector(".login__form");
-const message = document.querySelector("p");
+const responseMessage = document.querySelector("h2");
 
 loginForm.addEventListener("submit", async (event) => {
   event.preventDefault();
@@ -13,14 +11,12 @@ loginForm.addEventListener("submit", async (event) => {
 
   try {
     const response = await axios.post("http://localhost:1000/login", loginObj);
-    if (response.data === "authenticated") {
+    if (response.status === 200) {
+      localStorage.setItem("jwt", response.data);
       window.location.href = ".././main/index.html";
-    } else if (response.data === "wrong password") {
-      message.textContent = response.data;
-    } else if (response.data === "wrong email") {
-      message.textContent = response.data;
+      console.log(response.data);
     }
   } catch (error) {
-    console.error(error);
+    responseMessage.textContent = error.response.data;
   }
 });

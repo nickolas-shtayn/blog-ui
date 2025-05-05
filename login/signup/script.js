@@ -1,4 +1,5 @@
 const signupForm = document.querySelector(".form__signup");
+const responseMessage = document.querySelector("h2");
 
 signupForm.addEventListener("submit", async (event) => {
   event.preventDefault();
@@ -18,6 +19,6 @@ signupForm.addEventListener("submit", async (event) => {
       window.location.href = "../index.html";
     }
   } catch (error) {
-    console.error(error);
+    responseMessage.textContent = error.response.data;
   }
 });

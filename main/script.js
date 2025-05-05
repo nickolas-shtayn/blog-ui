@@ -40,9 +40,16 @@ createPostForm.addEventListener("submit", async (event) => {
   }
   const postObj = { name, content };
   createPostForm.reset();
+  const token = localStorage.getItem("jwt");
+  if (!token) {
+    console.log("You are not logged in");
+    return;
+  }
 
   try {
-    const response = await axios.post("http://localhost:1000/", postObj);
+    const response = await axios.post("http://localhost:1000/", postObj, {
+      headers: { authorization: token },
+    });
     if (response.data === "ok") {
       window.location.reload();
     }
