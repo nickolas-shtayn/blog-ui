@@ -9,13 +9,15 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   </head>
   <body>
-    <ul>
-      <li id="logout"><a href="../login/index.html">logout</a></li>
-      <li id="login"><a href="../login/index.html">login</a></li>
-      <li><a href="../dashboard/index.html">my dashboard</a></li>
-    </ul>
-
-    <h1>Blog posts:</h1>
+    <a href="../main/index.html">main blog</a>
+    <form>
+      <h1>Create post:</h1>
+      <label for="form__input--title">Post title:</label>
+      <input type="text" name="post-title" id="form__input--title" />
+      <label for="form__input--content">Content:</label>
+      <textarea name="post-content" id="form__input--content"></textarea>
+      <button type="submit" id="form__button">publish</button>
+    </form>
     <div class="posts"></div>
   </body>
 </html>

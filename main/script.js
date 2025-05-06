@@ -1,5 +1,6 @@
 const postsContainer = document.querySelector(".posts");
-const createPostForm = document.querySelector("form");
+const loginButton = document.querySelector("#login");
+const logoutButton = document.querySelector("#logout");
 
 document.addEventListener("DOMContentLoaded", async () => {
   try {
@@ -29,31 +30,12 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 });
 
-createPostForm.addEventListener("submit", async (event) => {
-  event.preventDefault();
-
-  const name = event.target.elements["post-title"].value.trim();
-  const content = event.target.elements["post-content"].value.trim();
-
-  if (name === "" || content === "") {
-    return console.error("cannot submit empty form");
-  }
-  const postObj = { name, content };
-  createPostForm.reset();
-  const token = localStorage.getItem("jwt");
-  if (!token) {
-    console.log("You are not logged in");
-    return;
-  }
-
-  try {
-    const response = await axios.post("http://localhost:1000/", postObj, {
-      headers: { authorization: token },
-    });
-    if (response.data === "ok") {
-      window.location.reload();
-    }
-  } catch (error) {
-    console.log(error);
-  }
+logoutButton.addEventListener("click", () => {
+  localStorage.clear();
 });
+
+localStorage.getItem("jwt") !== null
+  ? (loginButton.classList.add("hidden"),
+    logoutButton.classList.remove("hidden"))
+  : (loginButton.classList.remove("hidden"),
+    logoutButton.classList.add("hidden"));
