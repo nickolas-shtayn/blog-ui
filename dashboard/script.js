@@ -3,25 +3,11 @@ const createPostForm = document.querySelector("form");
 
 document.addEventListener("DOMContentLoaded", async () => {
   const token = localStorage.getItem("jwt");
-  if (!token) {
-    const container = document.querySelector(".container") || document.body;
-    container.innerHTML = `
-      <div class="redirect-message">
-        <h3>Session expired</h3>
-        <p>Redirecting you to login in 3 seconds...</p> 
-      </div>
-    `;
-    setTimeout(() => {
-      window.location.href = ".././login/index.html";
-    }, 3000);
-    return;
-  }
 
   try {
     const response = await axios.get("http://localhost:1000/dashboard", {
       headers: { authorization: token },
     });
-    console.log(response.data);
     response.data.forEach((post) => {
       const { id, name, content } = post;
       const postCard = document.createElement("div");
@@ -42,12 +28,11 @@ document.addEventListener("DOMContentLoaded", async () => {
       deleteButton.id = "delete";
       const postButtons = document.createElement("div");
 
-      // editButton.addEventListener("click", async () => {
-
-      // })
+      editButton.addEventListener("click", () => {
+        window.location.href = `.././edit/index.html?id=${id}`;
+      });
 
       deleteButton.addEventListener("click", async () => {
-        console.log(id);
         try {
           const response = await axios.delete(
             "http://localhost:1000/deletepost",
@@ -61,6 +46,12 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
       });
 
+      postCard.addEventListener("click", (event) => {
+        if (event.target.id === "edit" || event.target.id === "delete") {
+          return;
+        }
+        window.location.href = `.././post/index.html?id=${id}`;
+      });
       postButtons.appendChild(editButton);
       postButtons.appendChild(deleteButton);
 
@@ -70,7 +61,19 @@ document.addEventListener("DOMContentLoaded", async () => {
       postsContainer.appendChild(postCard);
     });
   } catch (error) {
-    console.log(error);
+    if (error.response.data === "Expired") {
+      localStorage.clear();
+    }
+    const container = document.querySelector(".container") || document.body;
+    container.innerHTML = `
+      <div class="redirect-message">
+        <h3>Session expired</h3>
+        <p>Redirecting you to login in 3 seconds...</p>
+      </div>
+    `;
+    setTimeout(() => {
+      window.location.href = ".././main/index.html";
+    }, 3000);
   }
 });
 

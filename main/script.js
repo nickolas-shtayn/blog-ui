@@ -1,12 +1,10 @@
 const postsContainer = document.querySelector(".posts");
-const loginButton = document.querySelector("#login");
-const logoutButton = document.querySelector("#logout");
 
 document.addEventListener("DOMContentLoaded", async () => {
   try {
     const response = await axios.get("http://localhost:1000/");
     response.data.forEach((post) => {
-      const { name, content } = post;
+      const { id, name, content } = post;
       const postCard = document.createElement("div");
       postCard.classList.add("posts__card");
       const postHeader = document.createElement("h1");
@@ -19,8 +17,8 @@ document.addEventListener("DOMContentLoaded", async () => {
       postCard.appendChild(postHeader);
       postCard.appendChild(postContent);
 
-      postCard.addEventListener("click", (event) => {
-        console.log("I am dynamically adding eventListeners!");
+      postCard.addEventListener("click", () => {
+        window.location.href = `.././post/index.html?id=${id}`;
       });
 
       postsContainer.appendChild(postCard);
@@ -29,13 +27,3 @@ document.addEventListener("DOMContentLoaded", async () => {
     console.log(error);
   }
 });
-
-logoutButton.addEventListener("click", () => {
-  localStorage.clear();
-});
-
-localStorage.getItem("jwt") !== null
-  ? (loginButton.classList.add("hidden"),
-    logoutButton.classList.remove("hidden"))
-  : (loginButton.classList.remove("hidden"),
-    logoutButton.classList.add("hidden"));

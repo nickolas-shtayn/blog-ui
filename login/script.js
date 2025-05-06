@@ -13,8 +13,8 @@ loginForm.addEventListener("submit", async (event) => {
     const response = await axios.post("http://localhost:1000/login", loginObj);
     if (response.status === 200) {
       localStorage.setItem("jwt", response.data);
+
       window.location.href = ".././main/index.html";
-      console.log(response.data);
     }
   } catch (error) {
     responseMessage.textContent = error.response.data;
