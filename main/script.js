@@ -14,6 +14,9 @@ document.addEventListener("DOMContentLoaded", async () => {
       postHeader.textContent = name;
       postContent.textContent = content;
 
+      if (postContent.textContent.length > 60) {
+        postContent.textContent = content.substring(0, 60) + "...";
+      }
       postCard.appendChild(postHeader);
       postCard.appendChild(postContent);
 

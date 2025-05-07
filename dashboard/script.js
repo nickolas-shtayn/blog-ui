@@ -1,8 +1,19 @@
 const postsContainer = document.querySelector(".posts");
 const createPostForm = document.querySelector("form");
+const userGreeting = document.querySelector("#user-greeting");
 
 document.addEventListener("DOMContentLoaded", async () => {
   const token = localStorage.getItem("jwt");
+
+  try {
+    const response = await axios.get("http://localhost:1000/user", {
+      headers: { authorization: token },
+    });
+
+    userGreeting.textContent = response.data;
+  } catch (error) {
+    console.log(error);
+  }
 
   try {
     const response = await axios.get("http://localhost:1000/dashboard", {
@@ -19,6 +30,10 @@ document.addEventListener("DOMContentLoaded", async () => {
       postContent.classList.add("posts__card--content");
       postHeader.textContent = name;
       postContent.textContent = content;
+
+      if (postContent.textContent.length > 60) {
+        postContent.textContent = content.substring(0, 60) + "...";
+      }
 
       const editButton = document.createElement("button");
       const deleteButton = document.createElement("button");
@@ -61,6 +76,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       postsContainer.appendChild(postCard);
     });
   } catch (error) {
+    console.log(error.response);
     if (error.response.data === "Expired") {
       localStorage.clear();
     }
