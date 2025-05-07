@@ -15,7 +15,10 @@ signupForm.addEventListener("submit", async (event) => {
       "http://localhost:1000/signup",
       signupObj
     );
-    if (response.data === "signed up") {
+    if (
+      response.data === "signed up as admin" ||
+      response.data === "signed up as user"
+    ) {
       window.location.href = "../login/index.html";
     }
   } catch (error) {
