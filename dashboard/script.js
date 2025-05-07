@@ -1,6 +1,8 @@
 const postsContainer = document.querySelector(".posts");
 const createPostForm = document.querySelector("form");
 const userGreeting = document.querySelector("#user-greeting");
+const loginButton = document.querySelector("#login");
+const logoutButton = document.querySelector("#logout");
 
 document.addEventListener("DOMContentLoaded", async () => {
   const token = localStorage.getItem("jwt");
@@ -10,7 +12,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       headers: { authorization: token },
     });
 
-    userGreeting.textContent = response.data;
+    userGreeting.textContent = `hello, ${response.data}`;
   } catch (error) {
     console.log(error);
   }
