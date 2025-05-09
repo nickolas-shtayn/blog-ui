@@ -4,7 +4,7 @@ const logoutButton = document.querySelector("#logout");
 
 document.addEventListener("DOMContentLoaded", async () => {
   try {
-    const response = await axios.get("http://localhost:1000/");
+    const response = await axios.get("http://localhost:1000/fetchposts");
     response.data.forEach((post) => {
       const { id, name, content } = post;
       const postCard = document.createElement("div");
