@@ -1,12 +1,14 @@
 const loginForm = document.querySelector(".login__form");
 const responseMessage = document.querySelector("h2");
-const signUp = document.querySelector("#signup-link");
 
 document.addEventListener("DOMContentLoaded", async () => {
   const response = await axios.get("http://localhost:1000/admin");
 
   try {
-    signUp.remove();
+    const signUp = document.createElement("a");
+    signUp.href = "..//signup/index.html";
+    signUp.textContent = "SIGN UP";
+    loginForm.append(signUp);
   } catch (error) {
     console.log(error);
   }
