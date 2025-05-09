@@ -51,7 +51,7 @@ editForm.addEventListener("submit", async (event) => {
       }
     );
     if (response.status === 200) {
-      window.location.reload();
+      window.location.href = ".././dashboard/index.html";
     }
   } catch (error) {
     console.log(error.response);
