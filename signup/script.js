@@ -1,14 +1,48 @@
 const signupForm = document.querySelector(".form__signup");
 const responseMessage = document.querySelector("h2");
+const emailInput = document.querySelector("#email");
+
+document.addEventListener("DOMContentLoaded", async () => {
+  const urlParams = new URLSearchParams(window.location.search);
+  const userEmail = urlParams.get("email");
+
+  if (userEmail === null) {
+    return;
+  }
+
+  emailInput.value = userEmail;
+  emailInput.setAttribute("readonly", true);
+  emailInput.style.backgroundColor = "#f0f0f0";
+
+  const inviteCodeInput = document.createElement("input");
+  inviteCodeInput.type = "text";
+  inviteCodeInput.id = "invite-code";
+  inviteCodeInput.name = "invite-code";
+  inviteCodeInput.placeholder = "Enter invite code";
+  inviteCodeInput.required = true;
+
+  const passwordInput = document.querySelector("#password");
+  passwordInput.parentNode.insertBefore(
+    inviteCodeInput,
+    passwordInput.nextSibling
+  );
+});
 
 signupForm.addEventListener("submit", async (event) => {
   event.preventDefault();
 
   const email = event.target.elements["email"].value;
   const password = event.target.elements["password"].value;
+  const inviteCode = event.target.elements["invite-code"]?.value;
+
   const signupObj = { email, password };
-  console.log(signupObj);
-  signupForm.reset();
+  if (inviteCode) {
+    signupObj.inviteCode = inviteCode;
+  }
+  event.target.elements["password"].value = "";
+  if (event.target.elements["invite-code"]) {
+    event.target.elements["invite-code"].value = "";
+  }
 
   try {
     const response = await axios.post(

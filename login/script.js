@@ -1,6 +1,6 @@
 const loginForm = document.querySelector(".login__form");
 const responseMessage = document.querySelector("h2");
-const signUp = document.querySelector("a");
+const signUp = document.querySelector("#signup-link");
 
 document.addEventListener("DOMContentLoaded", async () => {
   const response = await axios.get("http://localhost:1000/admin");

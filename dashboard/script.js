@@ -1,8 +1,6 @@
 const postsContainer = document.querySelector(".posts");
 const createPostForm = document.querySelector("form");
 const userGreeting = document.querySelector("#user-greeting");
-const loginButton = document.querySelector("#login");
-const logoutButton = document.querySelector("#logout");
 
 document.addEventListener("DOMContentLoaded", async () => {
   const token = localStorage.getItem("jwt");
@@ -11,8 +9,13 @@ document.addEventListener("DOMContentLoaded", async () => {
     const response = await axios.get("http://localhost:1000/user", {
       headers: { authorization: token },
     });
-
-    userGreeting.textContent = `hello, ${response.data}`;
+    userGreeting.textContent = `hello, ${response.data.userEmail}`;
+    if (response.data.admin) {
+      const inviteLink = document.createElement("a");
+      inviteLink.textContent = "invite";
+      inviteLink.href = "../invite/index.html";
+      document.body.insertBefore(inviteLink, userGreeting);
+    }
   } catch (error) {
     console.log(error);
   }
@@ -53,7 +56,10 @@ document.addEventListener("DOMContentLoaded", async () => {
         try {
           const response = await axios.delete(
             "http://localhost:1000/deletepost",
-            { data: { id } }
+            { data: { id } },
+            {
+              headers: { authorization: token },
+            }
           );
           if (response.status === 200) {
             window.location.reload();
@@ -113,9 +119,13 @@ createPostForm.addEventListener("submit", async (event) => {
   }
 
   try {
-    const response = await axios.post("http://localhost:1000/", postObj, {
-      headers: { authorization: token },
-    });
+    const response = await axios.post(
+      "http://localhost:1000/createpost",
+      postObj,
+      {
+        headers: { authorization: token },
+      }
+    );
     if (response.status === 200) {
       window.location.reload();
     }

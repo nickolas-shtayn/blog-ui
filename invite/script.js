@@ -2,10 +2,6 @@ const inviteForm = document.querySelector(".form__invite");
 const inviteCode = document.querySelector("#invite-code");
 const generateButton = document.querySelector("#generate");
 
-// document.addEventListener("DOMContentLoaded", async () => {
-//     add jwt expiration event
-// })
-
 function generateRandomString() {
   const characters =
     "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -32,7 +28,10 @@ inviteForm.addEventListener("submit", async (event) => {
   try {
     const response = await axios.post(
       "http://localhost:1000/invite",
-      inviteObj
+      inviteObj,
+      {
+        headers: { authorization: token },
+      }
     );
     if (response.status === 200) {
       console.log("invite sent!");
