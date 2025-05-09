@@ -53,13 +53,12 @@ document.addEventListener("DOMContentLoaded", async () => {
       });
 
       deleteButton.addEventListener("click", async () => {
+        const token = localStorage.getItem("jwt");
+
         try {
           const response = await axios.delete(
             "http://localhost:1000/deletepost",
-            { data: { id } },
-            {
-              headers: { authorization: token },
-            }
+            { headers: { authorization: token }, data: { id } }
           );
           if (response.status === 200) {
             window.location.reload();
