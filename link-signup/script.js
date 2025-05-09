@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const userEmail = urlParams.get("email");
 
   if (userEmail === null) {
-    return;
+    window.location.href = ".././unauthorized/index.html";
   }
 
   emailInput.value = userEmail;
@@ -53,7 +53,19 @@ signupForm.addEventListener("submit", async (event) => {
       response.data === "signed up as admin" ||
       response.data === "signed up as user"
     ) {
-      window.location.href = "../login/index.html";
+      try {
+        const response = await axios.post(
+          "http://localhost:1000/login",
+          signupObj
+        );
+        if (response.status === 200) {
+          localStorage.setItem("jwt", response.data);
+
+          window.location.href = ".././main/index.html";
+        }
+      } catch (error) {
+        responseMessage.textContent = error.response.data;
+      }
     }
   } catch (error) {
     responseMessage.textContent = error.response.data;

@@ -4,13 +4,11 @@ const responseMessage = document.querySelector("h2");
 document.addEventListener("DOMContentLoaded", async () => {
   const response = await axios.get("http://localhost:1000/admin");
 
-  try {
+  if (response.data === "no admin found") {
     const signUp = document.createElement("a");
-    signUp.href = "..//signup/index.html";
+    signUp.href = "..//admin-signup/index.html";
     signUp.textContent = "SIGN UP";
     loginForm.append(signUp);
-  } catch (error) {
-    console.log(error);
   }
 });
 

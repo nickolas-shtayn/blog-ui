@@ -18,6 +18,7 @@ generateButton.addEventListener("click", () => {
 
 inviteForm.addEventListener("submit", async (event) => {
   event.preventDefault();
+  const token = localStorage.getItem("jwt");
 
   const email = event.target.elements["email"].value;
   const invite = event.target.elements["invite-code"].value;
