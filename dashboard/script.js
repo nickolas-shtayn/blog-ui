@@ -87,17 +87,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     console.log(error.response);
     if (error.response.data === "Expired") {
       localStorage.clear();
+      window.location.href = ".././unauthorized/index.html";
     }
-    const container = document.querySelector(".container") || document.body;
-    container.innerHTML = `
-      <div class="redirect-message">
-        <h3>Session expired</h3>
-        <p>Redirecting you to login in 3 seconds...</p>
-      </div>
-    `;
-    setTimeout(() => {
-      window.location.href = ".././main/index.html";
-    }, 3000);
+    window.location.href = ".././unauthorized/index.html";
   }
 });
 
@@ -114,7 +106,7 @@ createPostForm.addEventListener("submit", async (event) => {
   createPostForm.reset();
   const token = localStorage.getItem("jwt");
   if (!token) {
-    console.log("You are not logged in");
+    window.location.href = ".././unauthorized/index.html";
     return;
   }
 
@@ -130,6 +122,10 @@ createPostForm.addEventListener("submit", async (event) => {
       window.location.reload();
     }
   } catch (error) {
-    console.log(error);
+    if (error.response.data === "Expired") {
+      localStorage.clear();
+      window.location.href = ".././unauthorized/index.html";
+    }
+    window.location.href = ".././unauthorized/index.html";
   }
 });

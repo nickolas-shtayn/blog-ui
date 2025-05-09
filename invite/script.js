@@ -37,6 +37,11 @@ inviteForm.addEventListener("submit", async (event) => {
       console.log("invite sent!");
     }
   } catch (error) {
-    console.log("error");
+    console.log(error.response);
+    if (error.response.data === "Expired") {
+      localStorage.clear();
+      window.location.href = ".././unauthorized/index.html";
+    }
+    window.location.href = ".././unauthorized/index.html";
   }
 });

@@ -13,7 +13,12 @@ document.addEventListener("DOMContentLoaded", async () => {
     postTitle.value = name;
     postContent.value = content;
   } catch (error) {
-    console.log(error);
+    console.log(error.response);
+    if (error.response.data === "Expired") {
+      localStorage.clear();
+      window.location.href = ".././unauthorized/index.html";
+    }
+    window.location.href = ".././unauthorized/index.html";
   }
 });
 
@@ -49,6 +54,11 @@ editForm.addEventListener("submit", async (event) => {
       window.location.reload();
     }
   } catch (error) {
-    console.log(error);
+    console.log(error.response);
+    if (error.response.data === "Expired") {
+      localStorage.clear();
+      window.location.href = ".././unauthorized/index.html";
+    }
+    window.location.href = ".././unauthorized/index.html";
   }
 });
