@@ -16,3 +16,16 @@ body {
   border-bottom: 3px solid #3498db;
   padding-bottom: 0.5rem;
 }
+
+#content {
+  max-width: 800px;
+  width: 90%;
+  margin: 0 auto;
+  padding: 2rem;
+  line-height: 1.6;
+  font-size: 1.1rem;
+  color: #333;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
