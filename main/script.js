@@ -10,14 +10,14 @@ document.addEventListener("DOMContentLoaded", async () => {
       const postCard = document.createElement("div");
       postCard.classList.add("posts__card");
       const postHeader = document.createElement("h1");
-      const postContent = document.createElement("p");
+      const postContent = document.createElement("div");
       postHeader.classList.add("posts__card--header");
       postContent.classList.add("posts__card--content");
       postHeader.textContent = name;
-      postContent.textContent = content;
+      postContent.innerHTML = content;
 
-      if (postContent.textContent.length > 60) {
-        postContent.textContent = content.substring(0, 60) + "...";
+      if (postContent.innerHTML.length > 60) {
+        postContent.innerHTML = content.substring(0, 60) + "...";
       }
       postCard.appendChild(postHeader);
       postCard.appendChild(postContent);

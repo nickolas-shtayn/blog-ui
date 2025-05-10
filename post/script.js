@@ -1,5 +1,5 @@
-const postTitle = document.querySelector("h1");
-const postContent = document.querySelector("p");
+const postTitle = document.querySelector("#title");
+const postContent = document.querySelector("#content");
 
 document.addEventListener("DOMContentLoaded", async () => {
   const urlParams = new URLSearchParams(window.location.search);
@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   try {
     const { name, content } = response.data[0];
     postTitle.textContent = name;
-    postContent.textContent = content;
+    postContent.innerHTML = content;
   } catch (error) {
     console.log(error);
   }
