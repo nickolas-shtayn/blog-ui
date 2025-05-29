@@ -116,6 +116,7 @@ form {
 .posts__card:hover {
   background-color: var(--highlight-color);
   color: white;
+  cursor: pointer;
 }
 
 .posts__card--header {
