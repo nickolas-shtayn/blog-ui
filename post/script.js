@@ -1,5 +1,6 @@
 const postTitle = document.querySelector("#title");
 const postContent = document.querySelector("#content");
+const dashboardButton = document.querySelector("#dashboard");
 
 document.addEventListener("DOMContentLoaded", async () => {
   const urlParams = new URLSearchParams(window.location.search);
@@ -15,3 +16,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     console.log(error);
   }
 });
+
+localStorage.getItem("jwt") !== null
+  ? dashboardButton.classList.remove("hidden")
+  : dashboardButton.classList.add("hidden");

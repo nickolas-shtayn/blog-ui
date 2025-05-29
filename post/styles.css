@@ -3,7 +3,7 @@
 /* Base styles */
 body {
   font-family: var(--font-body);
-  font-size: var(--text-base);
+  font-size: var(--text-lg);
   color: var(--primary-color);
   line-height: 1.6;
   max-width: 800px;
@@ -93,4 +93,8 @@ a {
 
 a:hover {
   opacity: 0.8;
+}
+
+.hidden {
+  display: none;
 }
