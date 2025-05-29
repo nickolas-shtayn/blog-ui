@@ -1,9 +1,78 @@
+@import url(../variables.css);
+
 form {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  gap: var(--size-sm);
+  padding: var(--size-md);
+  background-color: var(--secondary-color);
+  border-radius: var(--size-md);
   width: 50vw;
+  margin: 0 auto;
 }
 
-#invite-code {
-  width: 30vw;
+form h1 {
+  font-family: var(--font-header);
+  font-size: var(--text-xl);
+  color: var(--primary-color);
+}
+
+form label {
+  font-family: var(--font-body);
+  font-size: var(--text-lg);
+  color: var(--primary-color);
+}
+
+form input {
+  padding: var(--size-sm);
+  border: 1px solid var(--accent-color);
+  border-radius: var(--size-sm);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+}
+
+button {
+  padding: var(--size-sm) var(--size-lg);
+  background-color: var(--highlight-color);
+  color: var(--bg-color);
+  border: none;
+  border-radius: var(--size-sm);
+  font-family: var(--font-header);
+  font-size: var(--text-lg);
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+h2 {
+  font-family: var(--font-header);
+  font-size: var(--text-lg);
+  color: var(--primary-color);
+  text-align: center;
+  margin-top: var(--size-md);
+}
+
+.nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: var(--size-md);
+  background-color: var(--bg-color);
+  border-bottom: 1px solid var(--secondary-color);
+  font-family: var(--font-body);
+}
+
+.nav a {
+  color: var(--primary-color);
+  text-decoration: none;
+  padding: var(--size-sm);
+  border-radius: var(--size-sm);
+}
+
+.nav a:hover {
+  background-color: var(--highlight-color);
+  color: var(--secondary-color);
 }

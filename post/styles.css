@@ -1,31 +1,96 @@
+@import url(../variables.css);
+
+/* Base styles */
 body {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  color: var(--primary-color);
+  line-height: 1.6;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: var(--size-lg);
 }
 
 #title {
-  font-size: 2.5rem;
-  color: #2c3e50;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  text-align: center;
-  margin: 2rem 0;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-  border-bottom: 3px solid #3498db;
-  padding-bottom: 0.5rem;
+  font-family: var(--font-header);
+  font-size: var(--size-2xl);
+  line-height: 1; /* Adjust between 1.2 and 1.5 as needed */
+  margin-bottom: 0.5em; /* Adds space below the heading */
 }
 
-#content {
-  max-width: 800px;
-  width: 90%;
-  margin: 0 auto;
-  padding: 2rem;
-  line-height: 1.6;
-  font-size: 1.1rem;
-  color: #333;
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
+.nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: var(--size-md);
+  background-color: var(--bg-color);
+  border-bottom: 1px solid var(--secondary-color);
+  font-family: var(--font-body);
+}
+
+.nav a {
+  color: var(--primary-color);
+  text-decoration: none;
+  padding: var(--size-sm);
+  border-radius: var(--size-sm);
+}
+
+.nav a:hover {
+  background-color: var(--highlight-color);
+  color: var(--secondary-color);
+}
+
+h2 {
+  font-family: var(--font-header);
+  font-size: var(--text-2xl);
+  color: var(--primary-color);
+  margin: var(--size-lg) 0 var(--size-md);
+}
+
+h3 {
+  font-family: var(--font-header);
+  font-size: var(--text-xl);
+  color: var(--primary-color);
+  margin: var(--size-lg) 0 var(--size-md);
+}
+
+p {
+  margin-bottom: var(--size-md);
+}
+
+blockquote {
+  font-style: italic;
+  border-left: 4px solid var(--highlight-color);
+  padding-left: var(--size-md);
+  margin: var(--size-lg) 0;
+  color: var(--accent-color);
+}
+
+ul {
+  margin: var(--size-md) 0;
+  padding-left: var(--size-xl);
+}
+
+li {
+  margin-bottom: var(--size-sm);
+}
+
+strong {
+  font-weight: bold;
+  color: var(--highlight-color);
+}
+
+em {
+  font-style: italic;
+  color: var(--accent-color);
+}
+
+a {
+  color: var(--highlight-color);
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+a:hover {
+  opacity: 0.8;
 }

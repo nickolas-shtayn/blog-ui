@@ -1,5 +1,66 @@
+@import url(../variables.css);
+
 form {
   display: flex;
   flex-direction: column;
-  width: 50vw;
+  justify-content: center;
+  align-items: center;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--primary-color);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: var(--font-body);
+}
+
+h1 {
+  font-family: var(--font-header);
+}
+
+button {
+  background-color: var(--accent-color);
+  border: 0;
+  color: var(--secondary-color);
+  margin-top: var(--size-md);
+  padding: var(--size-sm) var(--size-md);
+  border-radius: var(--size-sm);
+}
+
+button:hover {
+  background-color: var(--highlight-color);
+}
+
+input {
+  border: 1px solid var(--secondary-color);
+  background-color: var(--secondary-color);
+  border-radius: var(--size-sm);
+}
+
+.nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: var(--size-md);
+  background-color: var(--bg-color);
+  border-bottom: 1px solid var(--secondary-color);
+  font-family: var(--font-body);
+}
+
+.nav a {
+  color: var(--primary-color);
+  text-decoration: none;
+  padding: var(--size-sm);
+  border-radius: var(--size-sm);
+}
+
+.nav a:hover {
+  background-color: var(--highlight-color);
+  color: var(--secondary-color);
 }

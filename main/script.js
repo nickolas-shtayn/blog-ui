@@ -1,6 +1,7 @@
 const postsContainer = document.querySelector(".posts");
 const loginButton = document.querySelector("#login");
 const logoutButton = document.querySelector("#logout");
+const dashboardButton = document.querySelector("#dashboard");
 
 document.addEventListener("DOMContentLoaded", async () => {
   try {
@@ -39,6 +40,8 @@ logoutButton.addEventListener("click", () => {
 
 localStorage.getItem("jwt") !== null
   ? (loginButton.classList.add("hidden"),
-    logoutButton.classList.remove("hidden"))
+    logoutButton.classList.remove("hidden"),
+    dashboardButton.classList.remove("hidden"))
   : (loginButton.classList.remove("hidden"),
-    logoutButton.classList.add("hidden"));
+    logoutButton.classList.add("hidden"),
+    dashboardButton.classList.add("hidden"));

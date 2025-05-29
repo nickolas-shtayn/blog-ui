@@ -1,5 +1,54 @@
+@import url(../variables.css);
+
 form {
   display: flex;
   flex-direction: column;
-  width: 50vw;
+  align-items: center;
+  gap: var(--size-sm);
+  padding: var(--size-md);
+  background-color: var(--secondary-color);
+  border-radius: var(--size-md);
+  margin: 0 auto;
+}
+
+form h1 {
+  font-family: var(--font-header);
+  font-size: var(--text-xl);
+  color: var(--primary-color);
+}
+
+form label {
+  font-family: var(--font-body);
+  font-size: var(--text-lg);
+  color: var(--primary-color);
+}
+
+form input,
+form textarea {
+  width: 100%;
+  padding: var(--size-sm);
+  border: 1px solid var(--accent-color);
+  border-radius: var(--size-sm);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+}
+
+form textarea {
+  min-height: 300px;
+  resize: vertical;
+}
+
+#form__button {
+  padding: var(--size-sm) var(--size-lg);
+  background-color: var(--highlight-color);
+  color: var(--bg-color);
+  border: none;
+  border-radius: var(--size-sm);
+  font-family: var(--font-header);
+  font-size: var(--text-lg);
+  cursor: pointer;
+}
+
+#form__button:hover {
+  opacity: 0.9;
 }

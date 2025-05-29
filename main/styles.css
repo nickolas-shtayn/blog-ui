@@ -1,3 +1,5 @@
+@import url(../variables.css);
+
 form {
   display: flex;
   flex-direction: column;
@@ -12,4 +14,70 @@ form {
 
 .hidden {
   display: none;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: var(--size-md);
+  background-color: var(--bg-color);
+  border-bottom: 1px solid var(--secondary-color);
+  font-family: var(--font-body);
+}
+
+.nav a {
+  color: var(--primary-color);
+  text-decoration: none;
+  padding: var(--size-sm);
+  border-radius: var(--size-sm);
+}
+
+.nav a:hover {
+  background-color: var(--highlight-color);
+  color: var(--secondary-color);
+}
+
+#main-header {
+  font-size: 48px;
+  font-family: var(--font-header);
+  text-align: center;
+}
+
+.posts {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.posts__card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: var(--secondary-color);
+  border: 1px solid var(--secondary-color);
+  border-radius: 30px;
+}
+.posts__card:hover {
+  background-color: var(--highlight-color);
+  color: white;
+}
+
+.posts__card--header {
+  font-family: var(--font-header);
+  font-size: var(--text-lg);
+}
+
+.posts__card--content {
+  font-family: var(--font-body);
+}
+
+#title {
+  font-family: var(--font-header);
+  font-size: var(--text-2xl);
+  color: var(--primary-color);
+  margin-bottom: var(--size-lg);
+  text-align: center;
 }

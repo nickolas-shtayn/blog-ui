@@ -1,6 +1,7 @@
 const postsContainer = document.querySelector(".posts");
 const createPostForm = document.querySelector("form");
 const userGreeting = document.querySelector("#user-greeting");
+const navBar = document.querySelector(".nav");
 
 document.addEventListener("DOMContentLoaded", async () => {
   const token = localStorage.getItem("jwt");
@@ -14,7 +15,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       const inviteLink = document.createElement("a");
       inviteLink.textContent = "invite";
       inviteLink.href = "../invite/index.html";
-      document.body.insertBefore(inviteLink, userGreeting);
+      navBar.insertBefore(inviteLink, navBar.lastElementChild);
     }
   } catch (error) {
     console.log(error);
