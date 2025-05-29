@@ -76,3 +76,23 @@ h2 {
   background-color: var(--highlight-color);
   color: var(--secondary-color);
 }
+
+#email {
+  width: 350px;
+}
+
+#generate {
+  padding: 7px var(--size-lg);
+  margin-bottom: 0px;
+  border-radius: 0 var(--size-sm) var(--size-sm) 0;
+  width: 175px;
+}
+
+#code {
+  display: flex;
+}
+
+#invite-code {
+  border-radius: var(--size-sm) 0 0 var(--size-sm);
+  width: 175px;
+}
