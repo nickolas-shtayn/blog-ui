@@ -15,6 +15,27 @@ document.addEventListener("DOMContentLoaded", async () => {
 loginForm.addEventListener("submit", async (event) => {
   event.preventDefault();
 
+  const loader = document.createElement("div");
+  loader.className = "loader";
+  loginForm.appendChild(loader);
+  loader.style.cssText = `
+    border: 8px solid #f3f3f3;
+    border-top: 8px solid #3498db;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    animation: spin 2s linear infinite;
+  `;
+
+  const styleSheet = document.createElement("style");
+  styleSheet.textContent = `
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  `;
+  document.head.appendChild(styleSheet);
+
   const email = event.target.elements["email"].value;
   const password = event.target.elements["password"].value;
   const loginObj = { email, password };

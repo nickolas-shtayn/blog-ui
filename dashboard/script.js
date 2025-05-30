@@ -62,7 +62,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             { headers: { authorization: token }, data: { id } }
           );
           if (response.status === 200) {
-            window.location.reload();
+            postCard.remove();
           }
         } catch (error) {
           console.log(error);
@@ -119,7 +119,64 @@ createPostForm.addEventListener("submit", async (event) => {
       }
     );
     if (response.status === 200) {
-      window.location.reload();
+      const { id, name, content } = response.data;
+      const postCard = document.createElement("div");
+      postCard.classList.add("posts__card");
+      postCard.setAttribute("post-id", id);
+
+      const postHeader = document.createElement("h1");
+      const postContent = document.createElement("p");
+      postHeader.classList.add("posts__card--header");
+      postContent.classList.add("posts__card--content");
+      postHeader.textContent = name;
+      postContent.textContent = content;
+
+      if (postContent.textContent.length > 60) {
+        postContent.textContent = content.substring(0, 60) + "...";
+      }
+
+      const editButton = document.createElement("button");
+      const deleteButton = document.createElement("button");
+      editButton.textContent = "edit";
+      deleteButton.textContent = "delete";
+      editButton.id = "edit";
+      deleteButton.id = "delete";
+      const postButtons = document.createElement("div");
+
+      editButton.addEventListener("click", () => {
+        window.location.href = `.././edit/index.html?id=${id}`;
+      });
+
+      deleteButton.addEventListener("click", async () => {
+        const token = localStorage.getItem("jwt");
+
+        try {
+          const response = await axios.delete(
+            "http://localhost:1000/deletepost",
+            { headers: { authorization: token }, data: { id } }
+          );
+          if (response.status === 200) {
+            postCard.remove();
+          }
+        } catch (error) {
+          console.log(error);
+        }
+      });
+
+      postCard.addEventListener("click", (event) => {
+        if (event.target.id === "edit" || event.target.id === "delete") {
+          return;
+        }
+        window.location.href = `.././post/index.html?id=${id}`;
+      });
+
+      postButtons.appendChild(editButton);
+      postButtons.appendChild(deleteButton);
+
+      postCard.appendChild(postHeader);
+      postCard.appendChild(postContent);
+      postCard.appendChild(postButtons);
+      postsContainer.appendChild(postCard);
     }
   } catch (error) {
     if (error.response.data === "Expired") {
