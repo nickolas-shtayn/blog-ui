@@ -120,11 +120,13 @@ form {
 }
 
 .posts__card--header {
+  margin: 15px;
   font-family: var(--font-header);
   font-size: var(--text-lg);
 }
 
 .posts__card--content {
+  margin: 15px;
   font-family: var(--font-body);
 }
 
